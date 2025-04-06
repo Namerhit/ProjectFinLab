@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="swot.css">
+    <script src="scripts.js" defer></script>
+    <script src="swot.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html"><img src="img/logo-placeholder.png" alt="Логотип" class="logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Про нас</a></li>
+                    <li><a href="index.html#pricing">Плани та підписки</a></li>
+                    <li><a href="https://yourfintracker.blogspot.com/" target="_blank">Блог</a></li>
+                    <li><a href="swot.html">SWOT</a></li>
+                    <li><a href="index.html#contacts">Контакти</a></li>
+                </ul>
+            </nav>
+            <div class="account-info account">
+                <img src="img/account-icon.jpg" alt="Профіль" class="account-icon account" id="profile-icon">
+                <span class="account-name account">Ім'я Користувача</span>
+                <div class="dropdown-menu account" id="profile-dropdown">
+                    <ul>
+                        <li><a href="#" id="open-settings">Налаштування</a></li>
+                        <li id="change-name-link">Увійти</li>
+                        <li><a href="tracker.html">Застосунок</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 contenteditable="true">SWOT Analysis</h1>
+        
+        <div class="swot-grid">
+            <!-- Strengths Card -->
+            <div class="swot-card strengths">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h2 class="card-title" contenteditable="true">Strengths</h2>
+                </div>
+                <ul class="item-list">
+                </ul>
+                <div class="add-item">
+                    <i class="fas fa-plus"></i>
+                    <span>Add strength</span>
+                </div>
+            </div>
+            
+            <!-- Weaknesses Card -->
+            <div class="swot-card weaknesses">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h2 class="card-title" contenteditable="true">Weaknesses</h2>
+                </div>
+                <ul class="item-list">
+                   
+                </ul>
+                <div class="add-item">
+                    <i class="fas fa-plus"></i>
+                    <span>Add weakness</span>
+                </div>
+            </div>
+            
+            <!-- Opportunities Card -->
+            <div class="swot-card opportunities">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 class="card-title" contenteditable="true">Opportunities</h2>
+                </div>
+                <ul class="item-list">
+                </ul>
+                <div class="add-item">
+                    <i class="fas fa-plus"></i>
+                    <span>Add opportunity</span>
+                </div>
+            </div>
+            
+            <!-- Threats Card -->
+            <div class="swot-card threats">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2 class="card-title" contenteditable="true">Threats</h2>
+                </div>
+                <ul class="item-list">
+                </ul>
+                <div class="add-item">
+                    <i class="fas fa-plus"></i>
+                    <span>Add threat</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
