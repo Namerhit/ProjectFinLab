@@ -29,7 +29,7 @@
                 <div class="dropdown-menu account" id="profile-dropdown">
                     <ul>
                         <li><a href="#" id="open-settings">Налаштування</a></li>
-                        <li><a href="login.html">Увійти</a></li>
+                        <li id="change-name-li"><a href="#change-name" id="change-name-link">Змінити Ім'я<br/>Користувача</a></li>
                         <li><a href="tracker.html">Застосунок</a></li>
                     </ul>
                 </div>
@@ -60,13 +60,13 @@
             <button id="add-operation" class="operation-button">Створити нову операцію</button>
             <button id="edit-operation" class="operation-button">Редагувати операцію</button>
         </div>
-        
+        <!-- History of Operations -->
         <div class="operations-history">
             <h2>Історія операцій</h2>
             <div class="operations-container">
                 <button class="nav-arrow left-arrow">&lt;</button>
                 <div class="operations-list">
-                    
+                    <!-- Operations will be dynamically added here -->
                 </div>
                 <button class="nav-arrow right-arrow">&gt;</button>
             </div>
@@ -76,6 +76,10 @@
             <h2>Рекомендації AI</h2>
             <div class="recommendation-content">
                 <p class="recommendations">Ваші рекомендації будуть тут.</p>
+            </div>
+            <div class="budget-summary">
+                <h2>Підсумок бюджету</h2>
+                <p>Ваші фінансові підсумки будуть тут.</p>
             </div>
         </div>
 
@@ -92,7 +96,7 @@
             <button id="generate-prompt">Згенерувати звіт</button>
         </div>
     </div>
-        
+        <!-- Add Operation Form -->
         <div class="popup-overlay" id="add-operation-overlay">
             <div class="form-popup" id="add-operation-form">
                 <div class="form-content">
@@ -143,14 +147,14 @@
             </div>
         </div>
 
-        
+        <!-- Edit Operation Popup -->
         <div class="popup-overlay" id="edit-operation-overlay">
             <div class="edit-popup" id="edit-operation-popup">
                 <div class="edit-content">
                     <button id="close-edit">&times;</button>
                     <h2>Редагувати операцію</h2>
                     <div class="edit-list">
-                        
+                        <!-- List of operations to edit will be dynamically added here -->
                     </div>
                     <div class="edit-buttons">
                         <button id="save-edit">Зберегти</button>
@@ -173,12 +177,12 @@
                 <span>Темна тема</span>
             </div>
             <div class="popup-buttons">
-                <button class="popup-account delete-account">Видалити акаунт</button>
                 <button class="popup-account logout">Вийти</button>
             </div>
         </div>
     </div>
 </main>
+
 
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <div id="footer-container"></div>

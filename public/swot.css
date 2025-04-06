@@ -3,12 +3,15 @@
     --text-color: #1d1d1f;
     --card-bg: #ffffff;
     --strength-color: #34c759;
+    --strength-dark-color: #1b6b2f;
     --weakness-color: #ff3b30;
+    --weakness-dark-color: #94211b;
     --opportunity-color: #007aff;
+    --opportunity-dark-color: #00448f;
     --threat-color: #ff9500;
+    --threat-dark-color: #915500;
     --border-radius: 12px;
     --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    --spacing: 24px;
 }
 
 * {
@@ -21,8 +24,43 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    padding: var(--spacing);
     line-height: 1.5;
+}
+
+/* Dark Styles */
+
+
+html[data-theme='dark'] .swot-card {
+    background-color: #383838;
+}
+
+html[data-theme='dark'] .add-item {
+    color: #a6a6ad;
+}
+
+html[data-theme='dark'] .add-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #f5f5f7;
+}
+
+html[data-theme='dark'] .card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 
+
+
+
+
+html[data-theme='dark']
+html[data-theme='dark']
+html[data-theme='dark']
+html[data-theme='dark'] */
+
+
+
+main{
+    padding: 8rem;
 }
 
 .container {
@@ -31,7 +69,6 @@ body {
 }
 
 h1 {
-    margin-top: 50px;
     font-size: 40px;
     font-weight: 600;
     margin-bottom: 40px;
@@ -42,13 +79,13 @@ h1 {
 .swot-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing);
+    gap: 2rem;
 }
 
 .swot-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: var(--spacing);
+    padding: 2rem;
     box-shadow: var(--box-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -166,13 +203,71 @@ h1 {
     margin-left: 8px;
 }
 
-@media (max-width: 768px) {
-    .swot-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    h1 {
-        font-size: 32px;
-        margin-bottom: 30px;
-    }
+/* Header Styles */
+header {
+    padding: 3.25rem 2rem;
+} 
+
+/* Name Change Dialog Styles */
+#name-change-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#name-change-dialog .popup-content {
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+#name-change-dialog h2 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+#name-change-dialog #name-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#name-change-dialog #save-name {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+#name-change-dialog #save-name:hover {
+    background-color: var(--primary-dark);
+}
+
+#name-change-dialog .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-color);
 }

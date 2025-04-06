@@ -9,21 +9,26 @@ $(document).ready(function(){
     const logoutButton = $('.logout');
     const userNameElement = $('.account-name');
 
+    // Load components
     loadComponent("footer.html", "footer-container");
 
+    // Initialize user name from cookie
     const userName = getCookie('userName') || 'Ім\'я Користувача';
     userNameElement.text(userName);
 
+    // Account dropdown
     account.click(function(){
         dropdownMenu.show();
     });
 
+    // Document click handler
     $(document).click(function(event){
         if(!account.is(event.target) && !dropdownMenu.is(event.target) && dropdownMenu.has(event.target).length === 0) {
             dropdownMenu.hide();
         }
     });
-
+    
+    // Theme toggle
     const savedTheme = localStorage.getItem('theme') || 'light';
     root.attr('data-theme', savedTheme);
     themeToggle.prop('checked', savedTheme === 'dark');
@@ -34,6 +39,7 @@ $(document).ready(function(){
         localStorage.setItem('theme', newTheme);
     });
 
+    // Settings popup
     settingsButton.click(function(event) {
         event.preventDefault();
         settingsPopup.show();
@@ -45,28 +51,33 @@ $(document).ready(function(){
         $('body').css('overflow', 'auto');
     });
 
+    // Change login link to name change dialog
     $('a[href="#change-name"]').attr('href', '#').click(function(e) {
         e.preventDefault();
         showNameChangeDialog();
     });
 
+    // Logout functionality
     logoutButton.click(function() {
         if(confirm('Ви впевнені, що хочете вийти? Це очистить ваше ім\'я та всі операції.')) {
-
+            // Clear user name
             setCookie('userName', '', -1);
             userNameElement.text('Ім\'я Користувача');
-
+            
+            // Clear operations if on tracker page
             if(typeof window.clearAllOperations === 'function') {
                 window.clearAllOperations();
             }
-
+            
+            // Close settings
             settingsPopup.hide();
             $('body').css('overflow', 'auto');
-
+            
             alert('Ви успішно вийшли. Ваше ім\'я та дані очищено.');
         }
     });
 
+    // Name change dialog
     function showNameChangeDialog() {
         const nameDialog = $(`
             <div class="popup-overlay" id="name-change-dialog">
@@ -78,14 +89,16 @@ $(document).ready(function(){
                 </div>
             </div>
         `);
-
+        
         $('body').append(nameDialog);
         $('#name-change-dialog').css('display', 'flex');
-
+        
+        // Close dialog
         nameDialog.find('.close-popup').click(function() {
             nameDialog.remove();
         });
-
+        
+        // Save name
         $('#save-name').click(function() {
             const newName = $('#name-input').val().trim();
             if(newName) {
@@ -100,6 +113,7 @@ $(document).ready(function(){
     }
 });
 
+// Cookie helper functions
 function setCookie(name, value, days) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));

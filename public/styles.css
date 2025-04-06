@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
@@ -13,6 +14,7 @@ html{
     scroll-behavior: smooth;
 }
 
+/* Name Change Dialog Styles */
 #name-change-dialog {
     position: fixed;
     top: 0;
@@ -76,6 +78,7 @@ html{
     color: var(--text-color);
 }
 
+/* Dark Theme Styles */
 :root {
     --primary-color: #007bff; 
     --primary-dark: #005abb; 
@@ -258,6 +261,7 @@ html[data-theme='dark'] #group-logo {
     filter: invert();
 }
 
+/* Header Styles */
 header {
     position: fixed;
     top: 0;
@@ -359,6 +363,7 @@ nav ul li a:hover {
     top: 0;
 }
 
+/* Footer */
 footer{
     padding: 3rem;
 }
@@ -397,6 +402,7 @@ footer a:hover {
     color: #007bff;
 }
 
+/* Hero Section */
 .hero {
     text-align: center;
     padding: 6rem 2rem 4rem;
@@ -417,6 +423,7 @@ footer a:hover {
     margin: 0 auto;
 }
 
+/* About Us Content */
 .aboutus-content {
     padding: 3rem 2rem;
     max-width: 1000px;
@@ -430,6 +437,7 @@ footer a:hover {
     color: #444;
 }
 
+/* Infographics */
 .infographics {
     display: flex;
     gap: 2rem;
@@ -466,6 +474,7 @@ footer a:hover {
     color: #555;
 }
 
+/* Pricing Styles */
 #pricing {
     scroll-margin-top: 4rem;
     text-align: center;
@@ -488,6 +497,7 @@ footer a:hover {
     color: #555;
 }
 
+/* Contacts Styles */
 #contacts {
     scroll-margin-top: 4rem;
     text-align: center;
@@ -538,6 +548,7 @@ footer a:hover {
     filter: invert();
 }
 
+/* Video Section Styles */
 .video-section {
     display: flex;
     justify-content: center; 
@@ -584,6 +595,7 @@ footer a:hover {
     margin-bottom: 1rem;
 }
 
+/* Dropdown Styles */
 .dropdown-menu {
     position: absolute;
     top: calc(100% + 0.5rem);
@@ -600,6 +612,7 @@ footer a:hover {
     backdrop-filter: blur(10px);
 }
 
+/* Settings Popup Styles */
 .settings-popup {
     display: none;
     position: fixed;
@@ -644,12 +657,16 @@ main{
     width: 100vw; 
 }
 
+
+/* Login Styles */
 #login-main{
     padding: 8rem 2rem 4rem;
     background-color: #f0f8ff;
     text-align: center;
 }
 
+
+/* Theme Switch Styles */
 .theme-switch {
     display: flex;
     align-items: center;
@@ -690,6 +707,7 @@ main{
     left: 2px;
 }
 
+/* Language Switch Styles */
 #language-select {
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -714,6 +732,8 @@ main{
     }
 }
 
+
+
 .dropdown-menu ul {
     list-style: none;
     margin: 0;
@@ -723,6 +743,11 @@ main{
 .dropdown-menu ul li {
     padding: 0.5rem 1rem;
 }
+#change-name-li {
+    display: flex;
+    align-items: center;
+}
+
 
 .dropdown-menu ul li a {
     text-decoration: none;
@@ -743,6 +768,7 @@ main{
     padding: 0.5rem;
 }
 
+/* Animation */
 @keyframes dropdown-fade {
     from {
         opacity: 0;
@@ -754,6 +780,7 @@ main{
     }
 }
 
+/* Additional Changes for Mobile Compatibility */
 @media (max-width: 768px) {
     .account-info {
         top: 0.5rem;

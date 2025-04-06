@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="swot.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="scripts.js" defer></script>
     <script src="swot.js"></script>
 </head>
@@ -29,80 +30,101 @@
                 <div class="dropdown-menu account" id="profile-dropdown">
                     <ul>
                         <li><a href="#" id="open-settings">Налаштування</a></li>
-                        <li id="change-name-link">Увійти</li>
+                        <li id="change-name-li"><a href="#change-name" id="change-name-link">Змінити Ім'я<br/>Користувача</a></li>
                         <li><a href="tracker.html">Застосунок</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <script src="scripts.js"></script>
     </header>
-
-    <div class="container">
-        <h1 contenteditable="true">SWOT Analysis</h1>
-        
-        <div class="swot-grid">
-            <div class="swot-card strengths">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h2 class="card-title" contenteditable="true">Strengths</h2>
-                </div>
-                <ul class="item-list">
-                </ul>
-                <div class="add-item">
-                    <i class="fas fa-plus"></i>
-                    <span>Add strength</span>
-                </div>
-            </div>
+    <main>
+        <div class="container">
+            <h1 contenteditable="true">SWOT Analysis</h1>
             
-            <div class="swot-card weaknesses">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
+            <div class="swot-grid">
+                <!-- Strengths Card -->
+                <div class="swot-card strengths">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h2 class="card-title" contenteditable="true">Strengths</h2>
                     </div>
-                    <h2 class="card-title" contenteditable="true">Weaknesses</h2>
-                </div>
-                <ul class="item-list">
-                   
-                </ul>
-                <div class="add-item">
-                    <i class="fas fa-plus"></i>
-                    <span>Add weakness</span>
-                </div>
-            </div>
-            
-            <div class="swot-card opportunities">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <ul class="item-list">
+                    </ul>
+                    <div class="add-item">
+                        <i class="fas fa-plus"></i>
+                        <span>Add strength</span>
                     </div>
-                    <h2 class="card-title" contenteditable="true">Opportunities</h2>
                 </div>
-                <ul class="item-list">
-                </ul>
-                <div class="add-item">
-                    <i class="fas fa-plus"></i>
-                    <span>Add opportunity</span>
-                </div>
-            </div>
-            
-            <div class="swot-card threats">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-shield-alt"></i>
+                
+                <!-- Weaknesses Card -->
+                <div class="swot-card weaknesses">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h2 class="card-title" contenteditable="true">Weaknesses</h2>
                     </div>
-                    <h2 class="card-title" contenteditable="true">Threats</h2>
+                    <ul class="item-list">
+                    
+                    </ul>
+                    <div class="add-item">
+                        <i class="fas fa-plus"></i>
+                        <span>Add weakness</span>
+                    </div>
                 </div>
-                <ul class="item-list">
-                </ul>
-                <div class="add-item">
-                    <i class="fas fa-plus"></i>
-                    <span>Add threat</span>
+                
+                <!-- Opportunities Card -->
+                <div class="swot-card opportunities">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h2 class="card-title" contenteditable="true">Opportunities</h2>
+                    </div>
+                    <ul class="item-list">
+                    </ul>
+                    <div class="add-item">
+                        <i class="fas fa-plus"></i>
+                        <span>Add opportunity</span>
+                    </div>
+                </div>
+                
+                <!-- Threats Card -->
+                <div class="swot-card threats">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2 class="card-title" contenteditable="true">Threats</h2>
+                    </div>
+                    <ul class="item-list">
+                    </ul>
+                    <div class="add-item">
+                        <i class="fas fa-plus"></i>
+                        <span>Add threat</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="settings-popup">
+            <div class="settings-content">
+                <button id="close-popup">&times;</button>
+                <h2>Налаштування</h2>
+                <label for="language-select">Мова:</label>
+                <div id="google_translate_element"></div>
+                <div class="theme-switch">
+                    <span>Світла тема</span>
+                    <input type="checkbox" id="theme-toggle">
+                    <span>Темна тема</span>
+                </div>
+                <div class="popup-buttons">
+                    <button class="popup-account logout">Вийти</button>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
