@@ -1,6 +1,6 @@
 $(document).ready(function(){
     const recommendationsElement = document.querySelector('.recommendations');   
-    // Cookie helper functions
+
     function setCookie(name, value, days) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -19,10 +19,9 @@ $(document).ready(function(){
         return null;
     }
 
-    // Initialize charts and categories
     const income_categories = $(".income-categories");
     const costs_categories = $(".costs-categories");
-    
+
     let income_chart = [
         ['category', 'value'],
         ['Пусто', 0]
@@ -50,19 +49,16 @@ $(document).ready(function(){
     let budget = income_all - costs_all;
     $("#budget").text(budget + " грн");
 
-    // Initialize operations array and load from cookie
     let operations = getCookie('operations') || [];
     let currentIndex = 0;
     let editingIndex = null;
 
-    // Initialize UI with loaded operations
     if (operations.length > 0) {
         updatePieChart();
         updateBudget();
         renderOperations();
     }
 
-    // Operation type toggle
     $("#operation-type-toggle").on("change", () => {
         if($("#operation-type-toggle").is(":checked")){
             $("#operation-category").html(`
@@ -103,7 +99,6 @@ $(document).ready(function(){
         }
     });
 
-    // Add Operation Form
     const addOperationForm = $("#add-operation-form");
     const addOperationButton = $("#add-operation");
     const closeFormButton = $("#close-form");
@@ -131,7 +126,6 @@ $(document).ready(function(){
         operationForm.trigger("reset"); 
     });
 
-    // Edit Operation Popup
     const editOperationPopup = $("#edit-operation-popup");
     const editOperationButton = $("#edit-operation");
     const closeEditButton = $("#close-edit");
@@ -154,12 +148,11 @@ $(document).ready(function(){
         editOperationPopup.css("display", "none");
     });
 
-    // Form Submission
     const operationForm = $("#operation-form");
     operationForm.on("submit", (e) => {
         e.preventDefault();
         $(".popup-overlay").fadeOut(500);
-        
+
         const operation = {
             id: Date.now(),
             name: $("#operation-name").val(),
@@ -186,11 +179,10 @@ $(document).ready(function(){
         operationForm.trigger("reset");
     });
 
-    // Render Operations with delete buttons
     function renderOperations() {
         const operationsList = $(".operations-list");
         operationsList.empty();
-        
+
         for (let i = currentIndex; i < Math.min(currentIndex + 3, operations.length); i++) {
             const operation = operations[i];
             const operationBlock = $(`
@@ -209,7 +201,6 @@ $(document).ready(function(){
             operationsList.append(operationBlock);
         }
 
-        // Add delete handlers
         $(".delete-operation").click(function(e) {
             e.stopPropagation();
             const operationId = parseInt($(this).data("id"));
@@ -223,11 +214,10 @@ $(document).ready(function(){
         });
     }
 
-    // Operation details popup with delete button
     $(document).on("click", ".operation-block", function() {
         const operationId = $(this).data("id");
         const operation = operations.find(op => op.id === operationId);
-        
+
         if (operation) {
             const popupContent = $(`
                 <div class="popup-overlay" id="popup-overlay">
@@ -246,16 +236,14 @@ $(document).ready(function(){
                     </div>
                 </div>
             `);
-            
+
             $("body").append(popupContent);
             $("#popup-overlay").css("display", "flex");
 
-            // Close popup
             popupContent.find(".close-popup").on("click", () => {
                 $("#popup-overlay").fadeOut(() => popupContent.remove());
             });
 
-            // Delete operation from popup
             popupContent.find(".delete-btn").on("click", function() {
                 if (confirm("Ви впевнені, що хочете видалити цю операцію?")) {
                     operations = operations.filter(op => op.id !== operation.id);
@@ -269,24 +257,22 @@ $(document).ready(function(){
         }
     });
 
-    // Update Budget
     function updateBudget() {
         let totalIncome = operations
             .filter(op => op.type === "income")
             .reduce((sum, op) => sum + op.amount, 0);
-        
+
         let totalExpenses = operations
             .filter(op => op.type === "expense")
             .reduce((sum, op) => sum + op.amount, 0);
-        
+
         let budget = totalIncome - totalExpenses;
-        
+
         $("#income").text("+" + totalIncome + " грн");
         $("#costs").text("-" + totalExpenses + " грн");
         $("#budget").text(budget + " грн");
     }
 
-    // Navigation Arrows
     const leftArrow = $(".left-arrow");
     const rightArrow = $(".right-arrow");
 
@@ -304,11 +290,10 @@ $(document).ready(function(){
         }
     });
 
-    // Render Edit List with delete buttons
     function renderEditList() {
         const editList = $(".edit-list");
         editList.empty();
-        
+
         operations.forEach((operation, index) => {
             const editItem = $(`
                 <div class="edit-item">
@@ -325,13 +310,11 @@ $(document).ready(function(){
             editList.append(editItem);
         });
 
-        // Add edit handlers
         $(".edit-btn").click(function() {
             const index = $(this).data("index");
             editOperation(index);
         });
 
-        // Add delete handlers
         $(".delete-btn").click(function() {
             const index = $(this).data("index");
             if (confirm("Ви впевнені, що хочете видалити цю операцію?")) {
@@ -345,7 +328,6 @@ $(document).ready(function(){
         });
     }
 
-    // Edit Operation
     function editOperation(index) {
         const operation = operations[index];
         $("#operation-name").val(operation.name);
@@ -364,7 +346,6 @@ $(document).ready(function(){
         editingIndex = index;
     }
 
-    // Update Pie Chart
     function updatePieChart() {
         let incomeData = operations.filter(op => op.type === "income");
         let expenseData = operations.filter(op => op.type === "expense");
@@ -382,10 +363,8 @@ $(document).ready(function(){
         let totalIncome = Object.values(incomeGrouped).reduce((sum, amount) => sum + amount, 0);
         let totalExpenses = Object.values(expenseGrouped).reduce((sum, amount) => sum + amount, 0);
 
-        // Update income chart
         updateSinglePieChart(incomeGrouped, totalIncome, "income", ["var(--green-1)", "var(--green-2)", "var(--green-3)"]);
 
-        // Update expenses chart
         updateSinglePieChart(expenseGrouped, totalExpenses, "costs", ["var(--red-1)", "var(--red-2)", "var(--red-3)"]);
     }
 
@@ -395,7 +374,7 @@ $(document).ready(function(){
         const totalElement = $(`#${type}`);
 
         if (Object.keys(data).length === 0) {
-            // No data case
+
             $(piechartId).css({ backgroundImage: `conic-gradient(${colors[0]} 0 360deg)` });
             categoriesContainer.html(`
                 <div class="${type}-category">
@@ -409,7 +388,7 @@ $(document).ready(function(){
         }
 
         if (Object.keys(data).length === 1) {
-            // Single category case
+
             const category = Object.keys(data)[0];
             const amount = data[category];
             $(piechartId).css({ backgroundImage: `conic-gradient(${colors[0]} 0 360deg)` });
@@ -424,7 +403,6 @@ $(document).ready(function(){
             return;
         }
 
-        // Multiple categories case
         let degrees = [];
         let cumulativeDegrees = 0;
 
@@ -445,7 +423,6 @@ $(document).ready(function(){
 
         $(piechartId).css({ backgroundImage: `conic-gradient(${gradient})` });
 
-        // Update categories list
         categoriesContainer.empty();
         Object.entries(data).forEach(([category, amount], i) => {
             const categoryItem = $(`
@@ -461,7 +438,6 @@ $(document).ready(function(){
         totalElement.text(`${type === 'income' ? '+' : '-'}${total} грн`);
     }
 
-    // AI Analysis Form
     $("#generate-prompt").on('click', function(e) {
         e.preventDefault();
 
